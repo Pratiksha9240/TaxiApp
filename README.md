@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## use `npm install` to install the node modules before running the code with npm start
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -70,7 +72,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 ### Libraries used
-React router 5
-React bootstrap
-react-icons
-email-js client
+
+### `npm install react-redux` `npm install @reduxjs/toolkit` `npm install redux` react redux toolkit
+
+### `Npm install react-router-dom@5` React router 
+
+### `npm install react-bootstrap bootstrap` React bootstrap
+
+### `npm i react-bootstrap-icons`  react-icons
+
+### `npm install @emailjs/browser --save`  email-js client
