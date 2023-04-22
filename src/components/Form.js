@@ -164,8 +164,9 @@ const MyForm = (props) => {
           centered
         >
           <Modal.Header style={{ color: "green" ,backgroundColor: 'lightGrey' }}>
-            Booking Successfull!!!
+            Booking Successfull. Please check your email!!!
             Below are the details
+            
           </Modal.Header>
           <Detail style={{backgroundColor: 'lightGrey'}}/>
           <Modal.Footer>
