@@ -1,12 +1,15 @@
 import { Modal, Button, Form, Col, Row } from "react-bootstrap";
 import { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { bookActions } from "../store/book-slice";
 import Detail from "./Detail";
+import emailjs from '@emailjs/browser';
 
 const MyForm = (props) => {
   const [validated, setValidated] = useState(false);
   const dispatch = useDispatch();
+  const bookings = useSelector(state => state.book.bookings)
+  console.log(bookings)
 
   const nameInputRef = useRef();
   const emailInputRef = useRef();
@@ -23,6 +26,7 @@ const MyForm = (props) => {
       event.stopPropagation();
     }
 
+    console.log(new Date().toLocaleString().split(', ')[1])
     setValidated(true);
     dispatch(
       bookActions.book({
@@ -34,6 +38,30 @@ const MyForm = (props) => {
         additional: adInputRef.current.value || "No requirements given",
       })
     );
+
+    emailjs
+    .send(
+      "default_service",
+      'template_0glikfl',
+      {
+        senderEmail: 'fromEmail',
+        receiverEmail: emailInputRef.current.value,
+        email: emailInputRef.current.value,
+        pickup: pInputRef.current.value,
+        dropoff: dInputRef.current.value,
+        date: dateInputRef.current.value,
+        time: timeInputRef.current.value,
+        additional: adInputRef.current.value 
+      },
+      'WbbruxmY311pDsfhL'
+    )
+    .then(res => {
+      if (res.status === 200) {
+        // setFormSubmitSuccessful(true)
+      }
+    })
+    // Handle errors here however you like
+    .catch(err => console.error("Failed to send feedback. Error: ", err))
   };
 
   return (
@@ -74,7 +102,7 @@ const MyForm = (props) => {
 
               <Form.Group as={Col} md="4" controlId="formBasicNumber">
                 <Form.Label>Contact No</Form.Label>
-                <Form.Control required type="number" placeholder="contact no" />
+                <Form.Control required type="tel" placeholder="contact no" pattern="[0-9]{10}"/>
               </Form.Group>
             </Row>
 
@@ -103,12 +131,12 @@ const MyForm = (props) => {
             <Row className="mb-3">
               <Form.Group as={Col} md="6" controlId="formBasicDate">
                 <Form.Label>Date</Form.Label>
-                <Form.Control required type="date" placeholder="Enter date" ref={dateInputRef}/>
+                <Form.Control required type="date" min={new Date().toISOString().split('T')[0]} placeholder="Enter date" ref={dateInputRef}/>
               </Form.Group>
 
               <Form.Group as={Col} md="6" controlId="formBasicTime">
                 <Form.Label>Time</Form.Label>
-                <Form.Control required type="time" placeholder="Enter Time" ref={timeInputRef}/>
+                <Form.Control required type="time" min={new Date().toLocaleString().split(', ')[1]} placeholder="Enter Time" ref={timeInputRef}/>
               </Form.Group>
             </Row>
 

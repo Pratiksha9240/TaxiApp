@@ -1,5 +1,4 @@
 import './App.css';
-import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
 import FAQ from './components/FAQ';
 import Home from './components/Home';
@@ -12,10 +11,6 @@ function App() {
       <Mynavbar />
       <Route exact path='/'>
         <Home />
-      </Route>
-
-      <Route path='/aboutUs'>
-        <AboutUs />
       </Route>
 
       <Route path='/contactUs'>
