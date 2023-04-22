@@ -1,7 +1,6 @@
-import { Carousel, Container } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 import taxiLogo from '../assets/logo.jpg'
 import taxi2 from '../assets/taxi2.jpg'
-import taxi3 from '../assets/taxi3.jpg'
 import taxi1 from '../assets/taxi1.jpg'
 
 

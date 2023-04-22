@@ -1,4 +1,4 @@
-import { Accordion, Container, Card, Button } from "react-bootstrap";
+import { Accordion, Container } from "react-bootstrap";
 
 const FAQ = () => {
   return (
